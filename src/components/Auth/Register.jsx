@@ -2,27 +2,44 @@ import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import registerLottie from "../../../public/register.json";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "./SocialLogin";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {createUser} = use(AuthContext)
-
-  const handleRegisterFrom=(e)=> {
+  const { createUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const handleRegisterFrom = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const url = e.target.url.value;
-    console.log(name, email, password, url)
-    createUser(email, password).then(result => {
-        console.log(result.user)
-    }).catch((error) => {
-        console.log(error)
-    })
-  }
+    console.log(name, email, password, url);
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          title: "Registration Successful!",
+          text: "You have successfully registered.",
+          icon: "success",
+          confirmButtonText: "Go to Home",
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Registration Failed!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">

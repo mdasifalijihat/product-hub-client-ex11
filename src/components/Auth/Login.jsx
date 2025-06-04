@@ -1,19 +1,44 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import loginLottie from "../../../public/login.json";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "./SocialLogin";
+import { AuthContext } from "../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { signInUser } = use(AuthContext);
+  const navigate = useNavigate();
 
-  const handleLoginFrom = (e)=>{
+  const handleLoginFrom = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password)
-  }
+    console.log(email, password);
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          title: "Log-in Successful!",
+          text: "You have successfully Log-in.",
+          icon: "success",
+          confirmButtonText: "Go to Home",
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Log-in Failed!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
