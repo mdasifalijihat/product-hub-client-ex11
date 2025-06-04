@@ -10,6 +10,7 @@ import Login from "../components/Auth/Login";
 import Myrecommendations from "../components/Page/Myrecommendations/Myrecommendations";
 import MyQueries from "../components/Page/MyQueries/MyQueries";
 import Register from "../components/Auth/Register";
+import PrivateRouter from "./PrivateRouter";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -18,11 +19,18 @@ export const router = createBrowserRouter([
     children:[
         {index:true, Component:Home}, 
         {path:'/queries', Component: Queries},
-        {path:'/recomendations', element: <RecommForMe></RecommForMe>},
+        {
+          path:'/recomendations',
+           element:<PrivateRouter> <RecommForMe></RecommForMe></PrivateRouter>
+          },
         {path:'/login', Component:Login },
         {path:'/register', Component:Register },
-        {path:'/myRecommendations', element:<Myrecommendations></Myrecommendations>},
-        {path:'/myQueries', element:<MyQueries></MyQueries>},
+        {
+          path:'/myRecommendations', 
+          element:<PrivateRouter> <Myrecommendations></Myrecommendations> </PrivateRouter>},
+        {
+          path:'/myQueries', 
+          element:<PrivateRouter><MyQueries></MyQueries></PrivateRouter>},
     ]
   },
 ]);

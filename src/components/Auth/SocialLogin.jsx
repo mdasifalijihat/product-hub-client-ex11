@@ -17,6 +17,7 @@ const SocialLogin = () => {
           title: "Login Successful!",
           text: "Welcome back!",
           icon: "success",
+          confirmButtonColor: "#ff6254",
           confirmButtonText: "Go to Home",
         }).then(() => {
           navigate("/");

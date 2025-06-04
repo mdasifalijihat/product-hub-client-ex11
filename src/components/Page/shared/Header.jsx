@@ -5,32 +5,32 @@ import { HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 const Header = () => {
-  const { user ,logOut} = use(AuthContext);
+  const { user, logOut } = use(AuthContext);
   console.log(user);
 
   const handleLogOut = () => {
-  logOut()
-    .then(() => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Logged out',
-        text: 'You have been logged out successfully.',
-        confirmButtonColor: '#ff6254', 
+    logOut()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Logged out",
+          text: "You have been logged out successfully.",
+          confirmButtonColor: "#ff6254",
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message || "Something went wrong during logout.",
+        });
       });
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error.message || 'Something went wrong during logout.',
-      });
-    });
-};
+  };
   const links = (
     <>
       <li>
         <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
           to={"/"}
         >
           Home
@@ -38,36 +38,41 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
           to={"/queries"}
         >
           Queries
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white"
-          to={"/recomendations"}
-        >
-          Recommendations For Me
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white"
-          to={"/myQueries"}
-        >
-          My Queries
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white"
-          to={"/myRecommendations"}
-        >
-          My recommendations
-        </NavLink>
-      </li>
+
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              to={"/recomendations"}
+            >
+              Recommendations For Me
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              to={"/myQueries"}
+            >
+              My Queries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              to={"/myRecommendations"}
+            >
+              My recommendations
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
