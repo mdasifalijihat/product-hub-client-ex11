@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 
@@ -35,6 +36,11 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   };
+
+  // update profile
+  const updateUser = (user, profile) => {
+    return updateProfile(user, profile);
+  };
   //   onAuthStateChange
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (curretnUser) => {
@@ -51,6 +57,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     googleLogin,
+    updateUser,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

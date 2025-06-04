@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser } = use(AuthContext);
+  const { createUser, updateUser } = use(AuthContext);
   const navigate = useNavigate();
   const handleRegisterFrom = (e) => {
     e.preventDefault();
@@ -21,7 +21,11 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        Swal.fire({
+        updateUser(result.user, {
+          displayName: name,
+          photoURL: url,
+        }).then(() =>{
+           Swal.fire({
           title: "Registration Successful!",
           text: "You have successfully registered.",
           icon: "success",
@@ -30,6 +34,8 @@ const Register = () => {
         }).then(() => {
           navigate("/");
         });
+        })
+       
       })
       .catch((error) => {
         console.log(error);

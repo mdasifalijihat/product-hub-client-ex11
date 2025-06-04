@@ -97,7 +97,10 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <button onClick={handleLogOut}> log Out</button>
+            <>
+              <img className="w-12 h-12 rounded-4xl" src={user.photoURL} alt="" />
+              <button onClick={handleLogOut}> log Out</button>{" "}
+            </>
           ) : (
             <NavLink
               to={"/login"}

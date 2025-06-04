@@ -11,6 +11,7 @@ import Myrecommendations from "../components/Page/Myrecommendations/Myrecommenda
 import MyQueries from "../components/Page/MyQueries/MyQueries";
 import Register from "../components/Auth/Register";
 import PrivateRouter from "./PrivateRouter";
+import AddQueries from "../components/Page/MyQueries/AddQueries";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +31,12 @@ export const router = createBrowserRouter([
           element:<PrivateRouter> <Myrecommendations></Myrecommendations> </PrivateRouter>},
         {
           path:'/myQueries', 
-          element:<PrivateRouter><MyQueries></MyQueries></PrivateRouter>},
+          element:<PrivateRouter><MyQueries></MyQueries></PrivateRouter>
+        },
+        {
+          path:'/addqueries', 
+          element:<PrivateRouter><AddQueries></AddQueries></PrivateRouter>
+        },
     ]
   },
 ]);
