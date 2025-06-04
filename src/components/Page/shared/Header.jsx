@@ -1,8 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import './header.css'
 import { HiHomeModern } from "react-icons/hi2";
+import { AuthContext } from "../../../AuthContext/AuthContext";
 const Header = () => {
+    const user = use(AuthContext)
+    console.log(user)
   const links = <>
              
             <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/'}>Home</NavLink></li>
