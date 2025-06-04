@@ -3,13 +3,29 @@ import { NavLink } from "react-router";
 import "./header.css";
 import { HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 const Header = () => {
-  const { user } = use(AuthContext);
+  const { user ,logOut} = use(AuthContext);
   console.log(user);
 
-  const hanldeLogOut =() => {
-    
-  }
+  const handleLogOut = () => {
+  logOut()
+    .then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged out',
+        text: 'You have been logged out successfully.',
+        confirmButtonColor: '#ff6254', 
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message || 'Something went wrong during logout.',
+      });
+    });
+};
   const links = (
     <>
       <li>
@@ -76,7 +92,7 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <button onClick={hanldeLogOut}> log Out</button>
+            <button onClick={handleLogOut}> log Out</button>
           ) : (
             <NavLink
               to={"/login"}

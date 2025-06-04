@@ -25,6 +25,7 @@ const Register = () => {
           title: "Registration Successful!",
           text: "You have successfully registered.",
           icon: "success",
+          confirmButtonColor: "#ff6254",
           confirmButtonText: "Go to Home",
         }).then(() => {
           navigate("/");

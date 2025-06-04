@@ -24,6 +24,7 @@ const Login = () => {
           title: "Log-in Successful!",
           text: "You have successfully Log-in.",
           icon: "success",
+          confirmButtonColor: '#ff6254', 
           confirmButtonText: "Go to Home",
         }).then(() => {
           navigate("/");

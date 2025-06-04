@@ -6,34 +6,40 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] =useState(true)
+  const [loading, setLoading] = useState(true);
   const provider = new GoogleAuthProvider();
   // new user create
   const createUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //   user login
   const signInUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   //   social login
   const googleLogin = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, provider);
+  };
+
+  //   logout section
+  const logOut = () => {
+    return signOut(auth);
   };
   //   onAuthStateChange
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (curretnUser) => {
       setUser(curretnUser);
-      setLoading(false)
+      setLoading(false);
     });
     return () => unSubscribe();
   }, []);
@@ -41,6 +47,7 @@ const AuthProvider = ({ children }) => {
   const userInfo = {
     user,
     loading,
+    logOut,
     createUser,
     signInUser,
     googleLogin,
