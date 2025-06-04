@@ -6,7 +6,6 @@ import { AuthContext } from "../../../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 const Header = () => {
   const { user, logOut } = use(AuthContext);
-  console.log(user);
 
   const handleLogOut = () => {
     logOut()
@@ -98,8 +97,7 @@ const Header = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <img className="w-12 h-12 rounded-4xl" src={user.photoURL} alt="" />
-              <button onClick={handleLogOut}> log Out</button>{" "}
+              <button className="mr-3 btn hover:bg-[rgb(255,98,84)] hover:text-white" onClick={handleLogOut}> log Out</button>
             </>
           ) : (
             <NavLink
