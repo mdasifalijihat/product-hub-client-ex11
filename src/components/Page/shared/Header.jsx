@@ -1,19 +1,59 @@
 import React, { use } from "react";
 import { NavLink } from "react-router";
-import './header.css'
+import "./header.css";
 import { HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 const Header = () => {
-    const user = use(AuthContext)
-    console.log(user)
-  const links = <>
-             
-            <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/'}>Home</NavLink></li>
-            <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/queries'}>Queries</NavLink></li>
-            <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/recomendations'}>Recommendations For Me</NavLink></li>
-            <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/myQueries'}>My Queries</NavLink></li>
-            <li><NavLink className="hover:bg-[rgb(255,98,84)] hover:text-white" to={'/myRecommendations'}>My recommendations</NavLink></li>
-  </>;
+  const { user } = use(AuthContext);
+  console.log(user);
+
+  const hanldeLogOut =() => {
+    
+  }
+  const links = (
+    <>
+      <li>
+        <NavLink
+          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          to={"/"}
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          to={"/queries"}
+        >
+          Queries
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          to={"/recomendations"}
+        >
+          Recommendations For Me
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          to={"/myQueries"}
+        >
+          My Queries
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:bg-[rgb(255,98,84)] hover:text-white"
+          to={"/myRecommendations"}
+        >
+          My recommendations
+        </NavLink>
+      </li>
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
@@ -35,7 +75,16 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-            <NavLink to={'/login'} className="btn hover:bg-[rgb(255,98,84)] hover:text-white">Log-in</NavLink>         
+          {user ? (
+            <button onClick={hanldeLogOut}> log Out</button>
+          ) : (
+            <NavLink
+              to={"/login"}
+              className="btn hover:bg-[rgb(255,98,84)] hover:text-white"
+            >
+              Log-in
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
