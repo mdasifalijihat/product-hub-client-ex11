@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecommForMe = () => {
+const QueryDetails = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const RecommForMe = () => {
   );
 };
 
-export default RecommForMe;
+export default QueryDetails;

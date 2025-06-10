@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import "./header.css";
 import { HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../../../AuthContext/AuthContext";
@@ -89,7 +89,7 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl"> Product </a>
+          <Link className="btn btn-ghost text-xl" to={'/'}>  ProductQueryHub </Link>          
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
