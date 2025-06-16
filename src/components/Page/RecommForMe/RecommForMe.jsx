@@ -36,7 +36,7 @@ const RecommForMe = () => {
             </thead>
             <tbody>
               {recommendations.map((rec) => (
-                <tr key={rec._id} className="hover:bg-gray-50">
+                <tr key={rec._id} className="hover:bg-gray-50">                  
                   <td className="border px-4 py-2">{rec.queryTitle}</td>
                   <td className="border px-4 py-2">
                     {rec.recommenderName} <br />
