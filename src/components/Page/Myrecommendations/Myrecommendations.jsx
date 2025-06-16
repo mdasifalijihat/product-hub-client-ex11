@@ -10,7 +10,9 @@ const MyRecommendations = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://product-rec-server.vercel.app/my-recommendations?email=${user.email}`)
+        .get(
+          `https://product-rec-server.vercel.app/my-recommendations?email=${user.email}`
+        )
         .then((res) => setMyRecs(res.data))
         .catch((err) => console.error(err));
     }
@@ -29,11 +31,17 @@ const MyRecommendations = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`https://product-rec-server.vercel.app/recommendations/${recId}`);
+        await axios.delete(
+          `https://product-rec-server.vercel.app/recommendations/${recId}`
+        );
 
         setMyRecs((prev) => prev.filter((rec) => rec._id !== recId));
 
-        Swal.fire("Deleted!", "Your recommendation has been removed.", "success");
+        Swal.fire(
+          "Deleted!",
+          "Your recommendation has been removed.",
+          "success"
+        );
       } catch (error) {
         console.error(error);
         Swal.fire("Error!", "Something went wrong.", "error");
@@ -50,47 +58,84 @@ const MyRecommendations = () => {
       {myRecs.length === 0 ? (
         <p>You haven't added any recommendations yet.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300 rounded">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-3 text-left">Product</th>
-                <th className="p-3 text-left">Recommended</th>
-                <th className="p-3 text-left">Reason</th>
-                <th className="p-3 text-left">Query Title</th>
-                <th className="p-3 text-left">Date</th>
-                <th className="p-3 text-left">Image</th>
-                <th className="p-3 text-left">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myRecs.map((rec) => (
-                <tr key={rec._id} className="border-t">
-                  <td className="p-3">{rec.recommendedProduct}</td>
-                  <td className="p-3">{rec.title}</td>
-                  <td className="p-3">{rec.reason}</td>
-                  <td className="p-3">{rec.queryTitle}</td>
-                  <td className="p-3">{new Date(rec.createdAt).toLocaleDateString()}</td>
-                  <td className="p-3">
-                    <img
-                      src={rec.imageUrl}
-                      alt={rec.recommendedProduct}
-                      className="w-16 h-16 object-cover rounded"
-                    />
-                  </td>
-                  <td className="p-3">
-                    <button
-                      onClick={() => handleDelete(rec._id)}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                  </td>
+        <>
+          {/* For Small Screens - Card View */}
+          <div className="grid grid-cols-1 gap-4 sm:hidden">
+            {myRecs.map((rec) => (
+              <div key={rec._id} className="border rounded-lg shadow-md p-4">
+                <img
+                  src={rec.imageUrl}
+                  alt={rec.recommendedProduct}
+                  className="w-full h-48 object-cover rounded mb-3"
+                />
+                <h3 className="text-lg font-semibold">
+                  {rec.recommendedProduct}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Recommended: {rec.title}
+                </p>
+                <p className="text-sm text-gray-600">Reason: {rec.reason}</p>
+                <p className="text-sm text-gray-600">
+                  Query Title: {rec.queryTitle}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Date: {new Date(rec.createdAt).toLocaleDateString()}
+                </p>
+                <button
+                  onClick={() => handleDelete(rec._id)}
+                  className="mt-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* For Medium and Large Screens - Table View */}
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="min-w-full border border-gray-300 rounded">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-3 text-left">Product</th>
+                  <th className="p-3 text-left">Recommended</th>
+                  <th className="p-3 text-left">Reason</th>
+                  <th className="p-3 text-left">Query Title</th>
+                  <th className="p-3 text-left">Date</th>
+                  <th className="p-3 text-left">Image</th>
+                  <th className="p-3 text-left">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {myRecs.map((rec) => (
+                  <tr key={rec._id} className="border-t">
+                    <td className="p-3">{rec.recommendedProduct}</td>
+                    <td className="p-3">{rec.title}</td>
+                    <td className="p-3">{rec.reason}</td>
+                    <td className="p-3">{rec.queryTitle}</td>
+                    <td className="p-3">
+                      {new Date(rec.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="p-3">
+                      <img
+                        src={rec.imageUrl}
+                        alt={rec.recommendedProduct}
+                        className="w-16 h-16 object-cover rounded"
+                      />
+                    </td>
+                    <td className="p-3">
+                      <button
+                        onClick={() => handleDelete(rec._id)}
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   );
