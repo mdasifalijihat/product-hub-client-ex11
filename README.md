@@ -37,8 +37,10 @@ Project Features
    Frontend: React, React Router, Vite, Tailwind CSS
 
    Backend: Express.js, MongoDB
+   
 
 Project Description
+
 ProductQueryHub is a dynamic and user-driven product recommendation platform designed to help users make informed purchasing decisions. Before buying a product, users can explore real queries, tips, and reviews shared by others who have experience with similar products.
 
 The platform allows users to post their own product-related questions, receive feedback, and view recommendations from fellow users. In return, they can also contribute by reviewing others' products. With features like real-time CRUD operations, personalized dashboards, and an intuitive interface, ProductQueryHub encourages a helpful and trustworthy community.

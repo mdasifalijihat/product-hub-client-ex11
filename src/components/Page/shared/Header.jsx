@@ -4,6 +4,7 @@ import "./header.css";
 import { HiHomeModern } from "react-icons/hi2";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   const { user, logOut } = use(AuthContext);
 
@@ -89,18 +90,27 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl" to={'/'}>  ProductQueryHub </Link>          
+          <Link className="btn btn-ghost text-xl" to={"/"}>
+            {" "}
+            ProductQueryHub{" "}
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-        <div className="mx-1 md:mx-4">
-          <input type="checkbox" value="aqua" className="toggle theme-controller" />
-        </div>
+          <div className="mx-1 md:mx-4 pt-2">
+            <ThemeToggle></ThemeToggle>
+          </div>
           {user ? (
             <>
-              <button className="mr-3 btn hover:bg-[rgb(255,98,84)] hover:text-white" onClick={handleLogOut}> log Out</button>
+              <button
+                className="mr-3 btn hover:bg-[rgb(255,98,84)] hover:text-white"
+                onClick={handleLogOut}
+              >
+                {" "}
+                log Out
+              </button>
             </>
           ) : (
             <NavLink
