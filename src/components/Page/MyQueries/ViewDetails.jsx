@@ -9,7 +9,7 @@ const ViewDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/queries/${id}`)
+      .get(`https://product-rec-server.vercel.app/queries/${id}`)
       .then((res) => {
         setQuery(res.data);
         setLoading(false);

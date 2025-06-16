@@ -12,7 +12,7 @@ const MyQueries = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    axios.get(`http://localhost:3000/queries?email=${user.email}`)
+    axios.get(`https://product-rec-server.vercel.app/queries?email=${user.email}`)
       .then(res => {
         const sorted = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setQueries(sorted);
@@ -31,7 +31,7 @@ const MyQueries = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/queries/${id}`)
+        axios.delete(`https://product-rec-server.vercel.app/queries/${id}`)
           .then(() => {
             setQueries(prev => prev.filter(q => q._id !== id));
             Swal.fire("Deleted!", "Your query has been deleted.", "success");

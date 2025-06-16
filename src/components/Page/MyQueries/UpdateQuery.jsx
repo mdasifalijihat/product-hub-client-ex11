@@ -10,7 +10,7 @@ const UpdateQuery = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/queries/${id}`)
+    axios.get(`https://product-rec-server.vercel.app/queries/${id}`)
       .then((res) => {
         setQuery(res.data);
         setLoading(false);
@@ -32,7 +32,7 @@ const UpdateQuery = () => {
       reasonDetails: form.reasonDetails.value,
     };
 
-    axios.put(`http://localhost:3000/queries/${id}`, updatedQuery)
+    axios.put(`https://product-rec-server.vercel.app/queries/${id}`, updatedQuery)
       .then(() => {
         Swal.fire({
           icon: "success",

@@ -9,7 +9,7 @@ const RecommForMe = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/recommendations/for-my-queries?email=${user.email}`)
+        .get(`https://product-rec-server.vercel.app/recommendations/for-my-queries?email=${user.email}`)
         .then((res) => setRecommendations(res.data))
         .catch((err) => console.error("Error fetching recommendations:", err));
     }

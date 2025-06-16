@@ -95,6 +95,9 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
+        <div className="mx-1 md:mx-4">
+          <input type="checkbox" value="aqua" className="toggle theme-controller" />
+        </div>
           {user ? (
             <>
               <button className="mr-3 btn hover:bg-[rgb(255,98,84)] hover:text-white" onClick={handleLogOut}> log Out</button>

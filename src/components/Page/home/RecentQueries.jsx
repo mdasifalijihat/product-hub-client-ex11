@@ -6,7 +6,7 @@ const RecentQueries = () => {
   const [recentQueries, setRecentQueries] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/queries")
+    axios.get("https://product-rec-server.vercel.app/queries")
       .then((res) => {        
         const sorted = res.data
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

@@ -10,7 +10,7 @@ const MyRecommendations = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/my-recommendations?email=${user.email}`)
+        .get(`https://product-rec-server.vercel.app/my-recommendations?email=${user.email}`)
         .then((res) => setMyRecs(res.data))
         .catch((err) => console.error(err));
     }
@@ -29,7 +29,7 @@ const MyRecommendations = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3000/recommendations/${recId}`);
+        await axios.delete(`https://product-rec-server.vercel.app/recommendations/${recId}`);
 
         setMyRecs((prev) => prev.filter((rec) => rec._id !== recId));
 

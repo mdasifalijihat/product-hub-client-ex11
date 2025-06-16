@@ -12,8 +12,8 @@ const QueryDetails = () => {
   const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/queries/${id}`).then((res) => setQuery(res.data));
-    axios.get(`http://localhost:3000/recommendations?queryId=${id}`).then((res) => setRecommendations(res.data));
+    axios.get(`https://product-rec-server.vercel.app/queries/${id}`).then((res) => setQuery(res.data));
+    axios.get(`https://product-rec-server.vercel.app/recommendations?queryId=${id}`).then((res) => setRecommendations(res.data));
   }, [id]);
 
   const handleAddRecommendation = (e) => {
@@ -34,10 +34,10 @@ const QueryDetails = () => {
       createdAt: new Date().toISOString(),
     };
 
-    axios.post("http://localhost:3000/recommendations", recommendation).then(() => {
-      axios.patch(`http://localhost:3000/queries/recommend-count/${id}`, { inc: 1 });
+    axios.post("https://product-rec-server.vercel.app/recommendations", recommendation).then(() => {
+      axios.patch(`https://product-rec-server.vercel.app/queries/recommend-count/${id}`, { inc: 1 });
       form.reset();
-      axios.get(`http://localhost:3000/recommendations?queryId=${id}`).then((res) => setRecommendations(res.data));
+      axios.get(`https://product-rec-server.vercel.app/recommendations?queryId=${id}`).then((res) => setRecommendations(res.data));
     });
   };
 
