@@ -18,7 +18,7 @@ const Queries = () => {
   }, []);
 
   const filteredQueries = queries.filter(query =>
-    query.productName.toLowerCase().includes(searchText.toLowerCase())
+    query.queryTitle.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
