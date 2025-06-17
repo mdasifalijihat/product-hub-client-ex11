@@ -17,7 +17,7 @@ const RecentQueries = () => {
   }, []);
 
   if (recentQueries.length === 0) {
-    return <p className="text-center py-10 text-gray-500">No recent queries found.</p>;
+    return <span className="loading loading-ring loading-xl"></span>;
   }
 
   return (

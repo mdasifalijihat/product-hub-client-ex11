@@ -20,8 +20,8 @@ const ViewDetails = () => {
       });
   }, [id]);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
-  if (!query) return <p className="text-center mt-10">Query not found</p>;
+  if (loading) <span className="loading loading-ring loading-xl"></span>;
+  if (!query) <span className="loading loading-ring loading-xl"></span>;
 
   return (
     <div className="max-w-4xl mx-auto p-6 my-10 bg-white rounded-2xl shadow-md">

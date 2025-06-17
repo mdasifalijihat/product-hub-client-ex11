@@ -53,8 +53,8 @@ const UpdateQuery = () => {
       });
   };
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
-  if (!query) return <p className="text-center mt-10">Query not found.</p>;
+  if (loading) return <span className="loading loading-ring loading-xl"></span>;
+  if (!query) return <span className="loading loading-ring loading-xl"></span>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-2xl mt-10 mb-13">

@@ -32,7 +32,7 @@ const HomeSlider = () => {
   };
 
   if (queries.length === 0) {
-    return <p className="text-center py-10">Loading slider...</p>;
+    return <span className="loading loading-ring loading-xl"></span>;
   }
 
   return (
