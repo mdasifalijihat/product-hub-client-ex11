@@ -63,7 +63,7 @@ const QueryDetails = () => {
     <div className="max-w-4xl mx-auto px-4 py-6 space-y-8">
       <div className="bg-white p-6 rounded-xl shadow-md">
         <h2 className="text-2xl font-bold mb-4">Query Details</h2>
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-6 text-black">
           <div className="md:order-2 flex-1 md:max-w-[450px]">
             <img
               src={query.imageUrl}
@@ -108,7 +108,7 @@ const QueryDetails = () => {
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-semibold mb-4">Add a Recommendation</h3>
+        <h3 className="text-xl text-black font-semibold mb-4">Add a Recommendation</h3>
         <form onSubmit={handleAddRecommendation} className="space-y-4">
           <input
             name="title"

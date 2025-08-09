@@ -22,7 +22,7 @@ const RecentQueries = () => {
 
   return (
     <section className=" px-4 py-12">
-      <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Recent Queries</h2>
+      <h2 className="text-4xl font-bold mb-8 text-center">Recent Queries</h2>
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {recentQueries.map((query) => (
           <div key={query._id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
