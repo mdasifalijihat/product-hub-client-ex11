@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import "./header.css";
-import { HiHomeModern } from "react-icons/hi2";
+import { HiMenuAlt1 } from "react-icons/hi";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import ThemeToggle from "./ThemeToggle";
@@ -82,11 +82,11 @@ const Header = () => {
            {/* Mobile Menu */}
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
-              <HiHomeModern size={24} />
+                           <HiMenuAlt1 size={24} />
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-white text-gray-800 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
