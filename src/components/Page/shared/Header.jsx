@@ -30,7 +30,7 @@ const Header = () => {
     <>
       <li>
         <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+          className="hover:bg-[rgb(255,98,84)] hover:text-white px-3 py-2 rounded-md"
           to={"/"}
         >
           Home
@@ -38,7 +38,7 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+          className="hover:bg-[rgb(255,98,84)] hover:text-white px-3 py-2 rounded-md"
           to={"/queries"}
         >
           Queries
@@ -49,7 +49,7 @@ const Header = () => {
         <>
           <li>
             <NavLink
-              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              className="hover:bg-[rgb(255,98,84)] hover:text-white px-3 py-2 rounded-md"
               to={"/recomendations"}
             >
               Recommendations For Me
@@ -57,7 +57,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              className="hover:bg-[rgb(255,98,84)] hover:text-white px-3 py-2 rounded-md"
               to={"/myQueries"}
             >
               My Queries
@@ -65,7 +65,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              className="hover:bg-[rgb(255,98,84)] hover:text-white mr-2"
+              className="hover:bg-[rgb(255,98,84)] hover:text-white px-3 py-2 rounded-md"
               to={"/myRecommendations"}
             >
               My recommendations
@@ -76,11 +76,12 @@ const Header = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="sticky top-0 z-50 bg-[rgb(255,98,84)]">
+      <div className="navbar  text-white shadow-md container mx-auto">
         <div className="navbar-start">
+           {/* Mobile Menu */}
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
               <HiHomeModern size={24} />
             </div>
             <ul
@@ -90,22 +91,25 @@ const Header = () => {
               {links}
             </ul>
           </div>
+            {/* Brand Name */}
           <Link className="btn btn-ghost text-xl" to={"/"}>
             {" "}
             ProductQueryHub{" "}
           </Link>
         </div>
+        {/* Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+          {/* Right Side */}
         <div className="navbar-end">
           <div className="mx-1 md:mx-4 pt-2">
-            <ThemeToggle></ThemeToggle>
+            <ThemeToggle />
           </div>
           {user ? (
             <>
               <button
-                className="mr-3 btn hover:bg-[rgb(255,98,84)] hover:text-white"
+                className="mr-3 btn bg-white text-[rgb(255,98,84)] border-none hover:bg-gray-200"
                 onClick={handleLogOut}
               >
                 {" "}
