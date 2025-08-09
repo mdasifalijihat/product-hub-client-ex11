@@ -6,7 +6,7 @@ import WhyChooseUs from '../ExtraSection/WhyChooseUs';
 
 const Home = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
             <HomeSlider></HomeSlider>
             <RecentQueries></RecentQueries>
             <AnimatedStat></AnimatedStat>
