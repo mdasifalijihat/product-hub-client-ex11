@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export function CategoryShowcase() {
   const categories = [
     { id: "electronics", label: "Electronics" },
