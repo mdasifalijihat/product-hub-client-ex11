@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router"; 
+import { Link } from "react-router";
 
-
-
+// Backend API URL
+const API_URL = "https://product-rec-server.vercel.app"; 
 
 // Simple spinner component
 function Spinner() {
@@ -23,8 +23,14 @@ export function PopularPublicQueries() {
       try {
         const res = await fetch(`${API_URL}/queries`);
         if (!res.ok) throw new Error("Failed to fetch queries");
+
         const data = await res.json();
-        setQueries(data.slice(0, 6)); // latest 6 queries
+
+        // sort by newest first and take first 6
+        const sorted = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setQueries(sorted.slice(0, 6));
       } catch (err) {
         console.error("Failed to load queries:", err);
       } finally {
