@@ -3,6 +3,7 @@ import HomeSlider from './HomeSlider';
 import RecentQueries from './RecentQueries';
 import AnimatedStat from '../ExtraSection/AnimatedStat';
 import WhyChooseUs from '../ExtraSection/WhyChooseUs';
+import LandingSections from './newbanner/LandingSections';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <RecentQueries></RecentQueries>
             <AnimatedStat></AnimatedStat>
             <WhyChooseUs></WhyChooseUs>
+            <LandingSections/>
             
         </div>
     );

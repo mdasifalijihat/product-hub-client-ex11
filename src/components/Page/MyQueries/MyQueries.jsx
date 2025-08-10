@@ -48,7 +48,7 @@ const MyQueries = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
+    <div className="container mx-auto px-4 py-6">
       {/* Banner */}
       <div className="bg-red-100 p-6 rounded-lg text-center mb-6">
         <h2 className="text-2xl font-bold text-red-600 mb-8">Your Product Queries</h2>

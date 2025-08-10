@@ -22,7 +22,7 @@ const Queries = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="container mx-auto  py-10">
       {/* Header and View Toggle */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <h2 className="text-3xl font-bold">All Product Queries</h2>
