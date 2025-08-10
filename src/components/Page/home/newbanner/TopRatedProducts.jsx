@@ -23,7 +23,9 @@ export function TopRatedProducts() {
         if (!res.ok) throw new Error("Failed to fetch products");
 
         const data = await res.json();
-        // রেটিং অনুযায়ী সাজানো
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid data format");
+        }
         const sorted = data.sort((a, b) => b.rating - a.rating);
         setProducts(sorted.slice(0, 6));
       } catch (err) {
@@ -55,13 +57,13 @@ export function TopRatedProducts() {
                 className="bg-white rounded-lg shadow p-4"
               >
                 <img
-                  src={p.image || "https://via.placeholder.com/300"}
-                  alt={p.name}
+                  src={p.imageUrl || "https://via.placeholder.com/300"}
+                  alt={p.productName}
                   className="w-full h-40 object-cover rounded"
                 />
-                <h3 className="font-medium text-lg mt-3 mb-1">{p.name}</h3>
+                <h3 className="font-medium text-lg mt-3 mb-1">{p.productName}</h3>
                 <p className="text-sm text-gray-600 h-14 overflow-hidden">
-                  {p.description || "No description provided."}
+                  {p.reasonDetails || "No description provided."}
                 </p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-sm font-semibold text-orange-500">

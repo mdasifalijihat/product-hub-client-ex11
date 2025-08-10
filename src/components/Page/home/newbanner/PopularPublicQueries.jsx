@@ -42,7 +42,7 @@ export function PopularPublicQueries() {
 
   return (
     <section className="py-12">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="container mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-4">Popular Public Queries</h2>
         <p className="text-sm text-gray-600 mb-6">
           লগইন না করেও সামান্য প্রশ্নগুলো দেখুন। বিস্তারিত জানতে লগইন করুন।
@@ -59,9 +59,9 @@ export function PopularPublicQueries() {
                 key={q._id}
                 className="bg-white rounded-lg shadow p-4"
               >
-                <h3 className="font-medium text-lg mb-2">{q.title}</h3>
+                <h3 className="font-medium text-lg mb-2">{q.queryTitle}</h3>
                 <p className="text-sm text-gray-600 h-14 overflow-hidden">
-                  {q.description || "No description provided."}
+                  {q.reasonDetails || "No description provided."}
                 </p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-xs text-gray-500">
@@ -70,7 +70,7 @@ export function PopularPublicQueries() {
                   <Link
                     to={`/queries/${q._id}`}
                     className="text-[rgb(255,98,84)] text-sm hover:underline"
-                    aria-label={`View query ${q.title}`}
+                    aria-label={`View query ${q.queryTitle}`}
                   >
                     See more
                   </Link>
