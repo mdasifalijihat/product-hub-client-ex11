@@ -45,7 +45,7 @@ export function TopRatedProducts() {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 px-4">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-4">Top Recommended Products</h2>
         <p className="text-sm text-gray-600 mb-6">
